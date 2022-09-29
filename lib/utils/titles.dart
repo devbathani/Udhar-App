@@ -1,1 +1,1 @@
-final mainScreenTitle = 'Udhar';
+const mainScreenTitle = 'Udhar';
