@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:injectable/injectable.dart';
+import 'package:udhar_app/injection/injection.dart';
 import 'package:udhar_app/routing/router.gr.dart';
 import 'package:udhar_app/utils/titles.dart';
 
 void main() {
+  configureInjection(Environment.dev);
   runApp(MyApp());
 }
 
