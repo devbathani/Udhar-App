@@ -180,25 +180,32 @@ class _SplashScreenState extends State<SplashScreen>
                                       ],
                                     ),
                                     child: TextField(
+                                      cursorColor: pinkColor,
                                       style: subTitleStyle.copyWith(
-                                          color: greyColor),
+                                        color: greyColor,
+                                      ),
                                       keyboardType: TextInputType.phone,
                                       decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10.r),
                                           borderSide: BorderSide(
-                                              width: 2.w, color: Colors.black),
+                                            width: 2.w,
+                                            color: Colors.black,
+                                          ),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10.r),
                                           borderSide: BorderSide(
-                                              width: 2.w, color: Colors.black),
+                                            width: 2.w,
+                                            color: Colors.black,
+                                          ),
                                         ),
                                         hintText: "Phone number",
                                         hintStyle: subTitleStyle.copyWith(
-                                            color: greyColor),
+                                          color: greyColor,
+                                        ),
                                       ),
                                     ),
                                   ),
