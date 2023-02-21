@@ -10,12 +10,13 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:udhar_app/core/api_client.dart' as _i3;
 import 'package:udhar_app/domain/auth/imp_auth_repo.dart' as _i4;
 import 'package:udhar_app/infrastructure/auth/auth_repository.dart' as _i5;
-import 'package:udhar_app/providers/auth/auth_provider.dart' as _i6;
+import 'package:udhar_app/providers/auth/auth_provider.dart' as _i7;
+import 'package:udhar_app/providers/splash/splash_provider.dart'
+    as _i6; // ignore_for_file: unnecessary_lambdas
 
-/// ignore_for_file: unnecessary_lambdas
-/// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: lines_longer_than_80_chars
 extension GetItInjectableX on _i1.GetIt {
-  /// initializes the registration of main-scope dependencies inside of [GetIt]
+  // initializes the registration of main-scope dependencies inside of GetIt
   _i1.GetIt init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
@@ -28,8 +29,9 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i3.APIClient>(() => _i3.APIClient());
     gh.lazySingleton<_i4.ImpAuthRepository>(
         () => _i5.AuthRepo(gh<_i3.APIClient>()));
-    gh.factory<_i6.AuthProvider>(
-        () => _i6.AuthProvider(gh<_i4.ImpAuthRepository>()));
+    gh.factory<_i6.SplashProvider>(() => _i6.SplashProvider());
+    gh.factory<_i7.AuthProvider>(
+        () => _i7.AuthProvider(gh<_i4.ImpAuthRepository>()));
     return this;
   }
 }
