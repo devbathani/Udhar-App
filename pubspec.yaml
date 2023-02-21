@@ -20,6 +20,8 @@ dependencies:
   injectable: ^2.1.0
   get_it: ^7.2.0
   dio: ^4.0.6
+  pin_code_fields: ^7.4.0
+
    
 dev_dependencies:
   flutter_test:
