@@ -1,22 +1,42 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
+import 'package:udhar_app/core/prefs.dart';
+import 'package:udhar_app/injection/injection.dart';
 import 'package:udhar_app/routing/router.gr.dart';
 
-enum ScreenType { splashScreen, authScreen }
+enum UserAuthState { login, register }
 
 @injectable
 class SplashProvider extends ChangeNotifier {
-  ScreenType screenType = ScreenType.splashScreen;
+  //Enums
+  UserAuthState userAuthState = UserAuthState.register;
 
-  navigateToLogin(BuildContext context) {
+  navigateToAuthScreen(BuildContext context) {
     Future.delayed(const Duration(seconds: 2), () {
-      AutoRouter.of(context).pushAndPopUntil(
-        const LoginScreen(),
-        predicate: (route) => false,
-      );
-      notifyListeners();
+      if (getIt<AppPrefs>().name.getValue().isEmpty) {
+        userAuthState = UserAuthState.register;
+        AutoRouter.of(context).pushAndPopUntil(
+          const RegisterScreen(),
+          predicate: (route) => false,
+        );
+        notifyListeners();
+      } else {
+        if (getIt<AppPrefs>().uid.getValue().isEmpty) {
+          userAuthState = UserAuthState.login;
+          AutoRouter.of(context).pushAndPopUntil(
+            const LoginScreen(),
+            predicate: (route) => false,
+          );
+          notifyListeners();
+        } else {
+          AutoRouter.of(context).pushAndPopUntil(
+            const HomeScreen(),
+            predicate: (route) => false,
+          );
+          notifyListeners();
+        }
+      }
     });
-    notifyListeners();
   }
 }

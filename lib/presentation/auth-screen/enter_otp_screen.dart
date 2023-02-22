@@ -4,6 +4,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:udhar_app/gen/assets.gen.dart';
 import 'package:udhar_app/providers/auth/auth_provider.dart';
+import 'package:udhar_app/providers/splash/splash_provider.dart';
 import 'package:udhar_app/utils/color.dart';
 import 'package:udhar_app/utils/text_styles.dart';
 
@@ -102,6 +103,14 @@ class EnterOtpScreen extends StatelessWidget {
                                     const Duration(milliseconds: 300),
                                 onChanged: (otp) async {
                                   if (otp.length == 6) {
+                                    if (Provider.of<SplashProvider>(context,
+                                                listen: false)
+                                            .userAuthState ==
+                                        UserAuthState.login) {
+                                      otpState.verifyLoginOtp(context);
+                                    } else {
+                                      otpState.verifyRegistrationOtp(context);
+                                    }
                                   } else if (otp.length != 6 || otp.isEmpty) {}
                                 },
                                 keyboardType: TextInputType.number,

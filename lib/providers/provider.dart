@@ -5,7 +5,7 @@ import 'package:udhar_app/providers/splash/splash_provider.dart';
 
 final providers = [
   ChangeNotifierProvider<SplashProvider>(
-    create: (context) => SplashProvider(),
+    create: (context) => getIt<SplashProvider>(),
     lazy: false,
   ),
   ChangeNotifierProvider<AuthProvider>(

@@ -136,11 +136,12 @@ class LoginScreen extends StatelessWidget {
                             height: 20.h,
                           ),
                           InkWell(
-                            onTap: () {
+                            onTap: () async {
                               if (loginState.authButtonState ==
                                   AuthButtonState.active) {
                                 HapticFeedback.vibrate();
                                 loginState.startTimer();
+                                await loginState.sendOtp(context);
                                 AutoRouter.of(context).push(
                                   const EnterOtpScreen(),
                                 );
