@@ -29,7 +29,7 @@ class AuthProvider extends ChangeNotifier {
   AuthButtonState authButtonState = AuthButtonState.deactive;
   OtpState otpState = OtpState.unsend;
 
-  //Controllers for Phone Number and OTP
+  //Controllers 
   final phoneNumberController = TextEditingController();
   final otpController = TextEditingController();
   final nameController = TextEditingController();
