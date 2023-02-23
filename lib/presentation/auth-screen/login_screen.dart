@@ -147,6 +147,18 @@ class LoginScreen extends StatelessWidget {
                                 );
                               } else {
                                 HapticFeedback.vibrate();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      "Please fill all details !!!",
+                                      style: subHeadingStyle.copyWith(
+                                        color: Colors.white,
+                                        fontSize: 12.sp,
+                                      ),
+                                    ),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
                               }
                             },
                             child: Container(
