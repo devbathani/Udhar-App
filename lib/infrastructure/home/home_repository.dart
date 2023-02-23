@@ -25,6 +25,7 @@ class HomeRepo extends ImpHomeRepository {
 
   @override
   Stream<List<UdharListEntity>> getUdharData() {
+    logger.w("Getting Data for ${getIt<AppPrefs>().name.getValue()}");
     List<UdharListEntity> listEntity = [];
     return FirebaseClient.firebaseFirestore
         .collection("Users")

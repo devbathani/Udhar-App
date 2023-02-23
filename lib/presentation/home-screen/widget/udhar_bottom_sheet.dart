@@ -94,7 +94,7 @@ showUdharBottomSheet(BuildContext context) {
                   SizedBox(
                     height: 40.h,
                     child: CustomHomeTextField(
-                      controller: homeState.phoneNumberController,
+                      controller: homeState.upiIdController,
                       onChanged: (value) {},
                       hintText: "UPI Id",
                     ),
@@ -144,6 +144,8 @@ showUdharBottomSheet(BuildContext context) {
                             backgroundColor: pinkColor,
                           ),
                         );
+                        await homeState.getUdharData();
+                        AutoRouter.of(context).pop();
                       }
                     },
                     child: Container(

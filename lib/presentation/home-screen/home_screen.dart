@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     Provider.of<HomeProvider>(context, listen: false).getUdharData();
+    Provider.of<HomeProvider>(context, listen: false).setupPay();
     super.initState();
   }
 
@@ -75,11 +76,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             "Welcome",
                             style: headingStyle,
                           ),
-                          Text(
-                            getIt<AppPrefs>().name.getValue().toUpperCase(),
-                            style: headingStyle.copyWith(
-                              color: pinkColor,
-                              fontSize: 30.sp,
+                          SizedBox(
+                            width: 250.w,
+                            child: Text(
+                              getIt<AppPrefs>().name.getValue().toUpperCase(),
+                              style: headingStyle.copyWith(
+                                color: pinkColor,
+                                fontSize: 25.sp,
+                              ),
                             ),
                           ),
                         ],
@@ -95,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 30.h,
                   ),
-                  homeState.udharListEntity == null
+                  homeState.udharList == null
                       ? Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
