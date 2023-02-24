@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,8 @@ import 'package:udhar_app/injection/injection.dart';
 import 'package:udhar_app/presentation/home-screen/widget/udhar_bottom_sheet.dart';
 import 'package:udhar_app/presentation/home-screen/widget/udhar_data_container.dart';
 import 'package:udhar_app/providers/home/home_provider.dart';
+import 'package:udhar_app/providers/splash/splash_provider.dart';
+import 'package:udhar_app/routing/router.gr.dart';
 import 'package:udhar_app/utils/color.dart';
 import 'package:udhar_app/utils/text_styles.dart';
 
@@ -65,7 +68,34 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 50.h,
+                    height: 30.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          getIt<AppPrefs>().uid.setValue('');
+                          Provider.of<SplashProvider>(context, listen: false)
+                              .setUserAuthStateToLogin();
+                          AutoRouter.of(context).pushAndPopUntil(
+                            const SplashScreen(),
+                            predicate: (route) => false,
+                          );
+                        },
+                        child: Icon(
+                          Icons.logout,
+                          size: 25.w,
+                          color: pinkColor,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20.h,
                   ),
                   Row(
                     children: [
@@ -99,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 30.h,
                   ),
-                  homeState.udharList == null
+                  homeState.udharList!.isEmpty
                       ? Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

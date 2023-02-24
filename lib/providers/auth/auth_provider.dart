@@ -29,7 +29,7 @@ class AuthProvider extends ChangeNotifier {
   AuthButtonState authButtonState = AuthButtonState.deactive;
   OtpState otpState = OtpState.unsend;
 
-  //Controllers 
+  //Controllers
   final phoneNumberController = TextEditingController();
   final otpController = TextEditingController();
   final nameController = TextEditingController();
@@ -134,6 +134,7 @@ class AuthProvider extends ChangeNotifier {
       final User user = FirebaseClient.firebaseAuth.currentUser!;
       uid = user.uid;
       getIt<AppPrefs>().uid.setValue(uid);
+      logger.i("UID : ${getIt<AppPrefs>().uid.getValue()}");
       otpVerificationState = OtpVerificationState.success;
       AutoRouter.of(context).pushAndPopUntil(
         const HomeScreen(),

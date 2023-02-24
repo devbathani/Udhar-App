@@ -12,6 +12,11 @@ class SplashProvider extends ChangeNotifier {
   //Enums
   UserAuthState userAuthState = UserAuthState.register;
 
+  setUserAuthStateToLogin() async {
+    userAuthState = UserAuthState.login;
+    notifyListeners();
+  }
+
   navigateToAuthScreen(BuildContext context) {
     Future.delayed(const Duration(seconds: 2), () {
       if (getIt<AppPrefs>().name.getValue().isEmpty) {
@@ -22,7 +27,7 @@ class SplashProvider extends ChangeNotifier {
         );
         notifyListeners();
       } else {
-        if (getIt<AppPrefs>().uid.getValue().isEmpty) {
+        if (getIt<AppPrefs>().uid.getValue() == '') {
           userAuthState = UserAuthState.login;
           AutoRouter.of(context).pushAndPopUntil(
             const LoginScreen(),

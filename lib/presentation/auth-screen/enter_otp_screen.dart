@@ -213,7 +213,10 @@ class EnterOtpScreen extends StatelessWidget {
                                                 ),
                                               )
                                             : InkWell(
-                                                onTap: () async {},
+                                                onTap: () async {
+                                                  await otpState
+                                                      .sendOtp(context);
+                                                },
                                                 child: Text(
                                                   "Resend",
                                                   style: subTitleStyle.copyWith(
