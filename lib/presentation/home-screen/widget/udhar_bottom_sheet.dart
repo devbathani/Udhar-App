@@ -75,6 +75,7 @@ showUdharBottomSheet(BuildContext context) {
                       controller: homeState.phoneNumberController,
                       onChanged: (value) {},
                       hintText: "Phone Number",
+                      keyboardType: TextInputType.number,
                     ),
                   ),
                   SizedBox(
@@ -83,6 +84,7 @@ showUdharBottomSheet(BuildContext context) {
                   SizedBox(
                     height: 40.h,
                     child: CustomHomeTextField(
+                      keyboardType: TextInputType.number,
                       controller: homeState.amountController,
                       onChanged: (value) {},
                       hintText: "Amount",
