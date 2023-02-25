@@ -256,7 +256,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onTap: () {
                               HapticFeedback.vibrate();
                               initiateWhatsappLogin(
-                                  "https://otpless.authlink.me?redirectUri=otpless://otpless");
+                                  "https://dev-test.authlink.me?redirectUri=otpless://dev-test");
                             },
                             child: Container(
                               height: 60.h,

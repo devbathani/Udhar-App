@@ -33,7 +33,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="otpless"
+                    android:host="dev-test"
                     android:scheme="otpless" />
 
             </intent-filter>
