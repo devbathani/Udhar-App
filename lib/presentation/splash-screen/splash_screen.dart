@@ -26,9 +26,9 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
     Provider.of<SplashProvider>(context, listen: false)
-        .navigateToLogin(context);
+        .navigateToAuthScreen(context);
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Consumer<SplashProvider>(

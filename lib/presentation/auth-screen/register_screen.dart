@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:udhar_app/gen/assets.gen.dart';
 import 'package:udhar_app/presentation/auth-screen/widgets/custom_textfield.dart';
 import 'package:udhar_app/providers/auth/auth_provider.dart';
-import 'package:udhar_app/routing/router.gr.dart';
 import 'package:udhar_app/utils/color.dart';
 import 'package:udhar_app/utils/text_styles.dart';
 
@@ -98,7 +97,7 @@ class RegisterScreen extends StatelessWidget {
                             height: 10.h,
                           ),
                           CustomTextField(
-                            controller: registerState.nameController,
+                            controller: registerState.phoneNumberController,
                             onChanged: (value) {},
                             hintText: "Phone",
                             keyboardType: TextInputType.phone,
@@ -110,7 +109,7 @@ class RegisterScreen extends StatelessWidget {
                             height: 10.h,
                           ),
                           CustomTextField(
-                            controller: registerState.nameController,
+                            controller: registerState.emailController,
                             onChanged: (value) {},
                             hintText: "Email",
                             keyboardType: TextInputType.emailAddress,
@@ -119,7 +118,7 @@ class RegisterScreen extends StatelessWidget {
                             height: 10.h,
                           ),
                           CustomTextField(
-                            controller: registerState.nameController,
+                            controller: registerState.upiIdController,
                             onChanged: (value) {},
                             hintText: "UPI Id",
                             keyboardType: TextInputType.text,
@@ -128,73 +127,66 @@ class RegisterScreen extends StatelessWidget {
                             height: 20.h,
                           ),
                           InkWell(
-                            onTap: () {
-                              if (registerState.authButtonState ==
-                                  AuthButtonState.active) {
+                            onTap: () async {
+                              if (registerState.nameController.text.isEmpty ||
+                                  registerState
+                                      .phoneNumberController.text.isEmpty ||
+                                  registerState.emailController.text.isEmpty ||
+                                  registerState.upiIdController.text.isEmpty) {
                                 HapticFeedback.vibrate();
-                                registerState.startTimer();
-                                AutoRouter.of(context).push(
-                                  const EnterOtpScreen(),
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      "Please fill all details !!!",
+                                      style: subHeadingStyle.copyWith(
+                                        color: Colors.white,
+                                        fontSize: 12.sp,
+                                      ),
+                                    ),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                              } else if (EmailValidator.validate(
+                                      registerState.emailController.text) ==
+                                  false) {
+                                HapticFeedback.vibrate();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      "Please enter a valid Email !!!",
+                                      style: subHeadingStyle.copyWith(
+                                        color: Colors.white,
+                                        fontSize: 12.sp,
+                                      ),
+                                    ),
+                                    backgroundColor: Colors.red,
+                                  ),
                                 );
                               } else {
-                                HapticFeedback.vibrate();
+                                HapticFeedback.vibrate(); 
+                                registerState.startTimer();
+                                await registerState.sendOtp(context);
                               }
                             },
                             child: Container(
                               height: 60.h,
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                color: registerState.authButtonState ==
-                                        AuthButtonState.active
-                                    ? pinkColor
-                                    : greyColor,
+                                color: pinkColor,
                                 borderRadius: BorderRadius.circular(10.r),
                               ),
                               child: Center(
-                                child: Text(
-                                  "Register",
-                                  style: subTitleStyle.copyWith(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "OR",
-                                style: subTitleStyle.copyWith(
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              HapticFeedback.vibrate();
-                            },
-                            child: Container(
-                              height: 60.h,
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                color: greenColor,
-                                borderRadius: BorderRadius.circular(10.r),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Login Via WhatsApp",
-                                  style: subTitleStyle.copyWith(
-                                    color: Colors.white,
-                                  ),
-                                ),
+                                child:
+                                    registerState.otpState == OtpState.sending
+                                        ? const CircularProgressIndicator(
+                                            color: Colors.white,
+                                          )
+                                        : Text(
+                                            "Register",
+                                            style: subTitleStyle.copyWith(
+                                              color: Colors.white,
+                                            ),
+                                          ),
                               ),
                             ),
                           ),

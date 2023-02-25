@@ -1,7 +1,7 @@
 // Package imports:
 
-import 'package:dio/dio.dart';
+import 'package:udhar_app/domain/auth/user_list_entity.dart';
 
 abstract class ImpAuthRepository {
-  Future<Response> login({required String email, required String password});
+  Future<void> registerUser({required UserListEntity userListEntity});
 }

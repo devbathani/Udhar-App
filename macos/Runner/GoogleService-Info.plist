@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>67534852727-rie3o9a8jd48m5hipi56podk1ejh92ih.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.67534852727-rie3o9a8jd48m5hipi56podk1ejh92ih</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDqjC6LnKbzKGWSTIbH2o4swlNRWRIUuuw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>67534852727</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.udharApp</string>
+	<key>PROJECT_ID</key>
+	<string>udhar-app-54d07</string>
+	<key>STORAGE_BUCKET</key>
+	<string>udhar-app-54d07.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:67534852727:ios:4cac153f3108fda000ec72</string>
+</dict>
+</plist>

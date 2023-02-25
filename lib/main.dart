@@ -1,14 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:injectable/injectable.dart';
 import 'package:provider/provider.dart';
+import 'package:udhar_app/core/prefs.dart';
 import 'package:udhar_app/injection/injection.dart';
 import 'package:udhar_app/providers/provider.dart';
 import 'package:udhar_app/routing/router.gr.dart';
 import 'package:udhar_app/utils/titles.dart';
 
-void main() {
+void main() async {
   configureInjection(Environment.dev);
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await setupLocator();
   runApp(MyApp());
 }
 
