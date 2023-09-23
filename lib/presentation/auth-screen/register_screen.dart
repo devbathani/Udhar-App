@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:udhar_app/gen/assets.gen.dart';
 import 'package:udhar_app/presentation/auth-screen/widgets/custom_textfield.dart';
 import 'package:udhar_app/providers/auth/auth_provider.dart';
+import 'package:udhar_app/routing/router.gr.dart';
 import 'package:udhar_app/utils/color.dart';
 import 'package:udhar_app/utils/text_styles.dart';
 
@@ -16,7 +18,7 @@ class RegisterScreen extends StatelessWidget {
     return Consumer<AuthProvider>(
       builder: (context, registerState, _) {
         return Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: primaryBackGroundColor,
           body: SingleChildScrollView(
             child: Column(
               children: [
@@ -163,9 +165,12 @@ class RegisterScreen extends StatelessWidget {
                                   ),
                                 );
                               } else {
-                                HapticFeedback.vibrate(); 
+                                HapticFeedback.vibrate();
                                 registerState.startTimer();
-                                await registerState.sendOtp(context);
+                                // await registerState.sendOtp(context);
+                                AutoRouter.of(context).push(
+                                  const EnterOtpScreen(),
+                                );
                               }
                             },
                             child: Container(

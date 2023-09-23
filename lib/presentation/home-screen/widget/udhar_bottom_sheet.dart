@@ -38,7 +38,7 @@ showUdharBottomSheet(BuildContext context) {
                         "Add Udhar",
                         style: subTitleStyle.copyWith(
                           fontSize: 25.sp,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                       const Spacer(),
@@ -157,7 +157,7 @@ showUdharBottomSheet(BuildContext context) {
                       ),
                       child: Center(
                         child: Text(
-                          "UDHAAR",
+                          "SipWise",
                           style: headingStyle.copyWith(
                             fontSize: 14.sp,
                             color: Colors.white,

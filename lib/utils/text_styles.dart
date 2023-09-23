@@ -5,14 +5,14 @@ import 'package:udhar_app/utils/color.dart';
 
 final headingStyle = GoogleFonts.poppins(
   textStyle: TextStyle(
-    color: Colors.black,
+    color: Colors.white,
     fontSize: 25.sp,
     fontWeight: FontWeight.bold,
   ),
 );
 final subHeadingStyle = GoogleFonts.poppins(
   textStyle: TextStyle(
-    color: Colors.black,
+    color: Colors.white,
     fontSize: 20.sp,
     fontWeight: FontWeight.w300,
   ),
@@ -24,4 +24,3 @@ final subTitleStyle = GoogleFonts.poppins(
     fontWeight: FontWeight.w500,
   ),
 );
-

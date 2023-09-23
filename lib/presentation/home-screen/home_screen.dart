@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Consumer<HomeProvider>(
       builder: (context, homeState, _) {
         return Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: primaryBackGroundColor,
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
           floatingActionButton: InkWell(
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Center(
                 child: Text(
-                  "UDHAAR",
+                  "SipWise",
                   style: headingStyle.copyWith(
                     fontSize: 14.sp,
                     color: Colors.white,

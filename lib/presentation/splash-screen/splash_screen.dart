@@ -4,6 +4,7 @@ import 'package:udhar_app/gen/assets.gen.dart';
 import 'package:udhar_app/providers/splash/splash_provider.dart';
 import 'package:udhar_app/utils/color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:udhar_app/utils/text_styles.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -28,13 +29,13 @@ class _SplashScreenState extends State<SplashScreen>
     Provider.of<SplashProvider>(context, listen: false)
         .navigateToAuthScreen(context);
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Consumer<SplashProvider>(
       builder: (context, splashState, _) {
         return Scaffold(
-          backgroundColor: pinkColor,
+          backgroundColor: primaryBackGroundColor,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -58,11 +59,12 @@ class _SplashScreenState extends State<SplashScreen>
                       SizedBox(
                         height: 20.h,
                       ),
-                      Image.asset(
-                        Assets.images.udharText.path,
-                        height: 25.h,
-                        width: 120.w,
-                        fit: BoxFit.cover,
+                      Text(
+                        "SipWise",
+                        style: headingStyle.copyWith(
+                          fontSize: 35.sp,
+                          color: pinkColor,
+                        ),
                       ),
                     ],
                   ),

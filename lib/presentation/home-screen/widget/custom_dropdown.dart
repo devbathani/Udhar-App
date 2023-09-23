@@ -25,7 +25,7 @@ class CustomDropDown extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.r),
         border: Border.all(
-          color: Colors.black,
+          color: Colors.white,
           width: 2.w,
         ),
         boxShadow: [
@@ -33,7 +33,7 @@ class CustomDropDown extends StatelessWidget {
             blurRadius: 5.r,
             spreadRadius: 0.5.w,
             offset: const Offset(0, 3),
-            color: Colors.black.withOpacity(0.33),
+            color: Colors.white.withOpacity(0.33),
           ),
         ],
       ),

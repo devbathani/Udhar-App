@@ -22,14 +22,13 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.circular(10.r),
         boxShadow: [
           BoxShadow(
             blurRadius: 5.r,
             spreadRadius: 0.5.w,
             offset: const Offset(0, 3),
-            color: Colors.black.withOpacity(0.33),
+            color: Colors.white.withOpacity(0.33),
           ),
         ],
       ),
@@ -42,11 +41,11 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.r),
-            borderSide: BorderSide(width: 2.w, color: Colors.black),
+            borderSide: BorderSide(width: 2.w, color: Colors.white),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.r),
-            borderSide: BorderSide(width: 2.w, color: Colors.black),
+            borderSide: BorderSide(width: 2.w, color: Colors.white),
           ),
           hintText: hintText,
           hintStyle: subTitleStyle.copyWith(color: greyColor),

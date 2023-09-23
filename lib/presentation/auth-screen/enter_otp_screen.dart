@@ -15,7 +15,7 @@ class EnterOtpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      backgroundColor: Colors.white,
+      backgroundColor: primaryBackGroundColor,
       body: Consumer<AuthProvider>(
         builder: (context, otpState, _) {
           return Padding(
